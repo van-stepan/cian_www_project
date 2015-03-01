@@ -1,7 +1,5 @@
-#plot-container {
+#plot_container {
 	width: 960px;
 	height: 540px;
-	background-color: red;
-	margin: auto;
-	margin-top: 40px;
+	margin: 0 auto;
 }
