@@ -10,7 +10,7 @@ $(function () {
             },
 
             title: {
-                text: 'Flat Price Dnamics in Moscow'
+                text: 'Flat Price Dynamics in Moscow'
             },
             
             xAxis: {
