@@ -6,6 +6,6 @@
         <title>New Web Project</title>
     </head>
     <body>
-        <h1>New Web Project Page</h1>
+        <div id = "plot-container"></div>
     </body>
 </html>
