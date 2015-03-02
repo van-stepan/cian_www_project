@@ -27,17 +27,35 @@
     		<div id = "query_options">
     			
     			<?php
-    			
+    				
+    				$db_type = "mysql";
+    				
     				include 'php/data.php';
     				
-    				$dbhandler = getDefaultDB();
-    				$result = pg_query($dbhandler, "SELECT DISTINCT nrooms FROM stats ORDER BY nrooms;");
+    				if($db_type == "psql") {
     				
-    				echo "<select id = 'nrooms_selector'>";
-	    			while ($row = pg_fetch_row($result)) {
-	    				echo "<option value='$row[0]'>$row[0]</option>";
+	    				$dbhandler = getDefaultDB('psql');
+	    				$result = pg_query($dbhandler, "SELECT DISTINCT nrooms FROM stats ORDER BY nrooms;");
+	    				
+	    				echo "<select id = 'nrooms_selector'>";
+		    			while ($row = pg_fetch_row($result)) {
+		    				echo "<option value='$row[0]'>$row[0]</option>";
+						}
+						echo "</select>";
+					
 					}
-					echo "</select>";
+					else {
+						
+						$dbhandler = getDefaultDB('mysql');
+	    				$result = $dbhandler->query("SELECT DISTINCT nrooms FROM stats ORDER BY nrooms;");
+	    				
+	    				echo "<select id = 'nrooms_selector'>";
+		    			while ($row = $result->fetch_array(MYSQLI_NUM)) {
+		    				echo "<option value='$row[0]'>$row[0]</option>";
+						}
+						echo "</select>";
+						
+					}
 				?>
     			
     		</div>

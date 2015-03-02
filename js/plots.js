@@ -19,7 +19,7 @@ function renewPlot() {
 				$('#plot_container').highcharts({
 		
 			        title: {
-			            text: 'My first High Plot'
+			            text: 'Average M2 Price Dynamics in Moscow'
 			        },
 			
 			        data: {
@@ -29,11 +29,26 @@ function renewPlot() {
 			        plotOptions: {
 			            series: {
 			                marker: {
-			                    enabled: false
+			                    enabled: true
+			                },
+			                title: {
+			                	text: 'Price'
 			                }
 			            }
-			        }
-			
+			        },
+			        					
+					yAxis: {
+			            title: {
+			                text: 'Price M2'
+			            }
+			        },
+					
+					xAxis: {
+						title: {
+			                text: 'Date'
+			            }
+					}
+			        
 				});
 				
 			}
