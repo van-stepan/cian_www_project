@@ -58,14 +58,10 @@
 			$query = "SELECT * FROM stats ";
 			
 			foreach($params as $param) {
-				echo var_dump($param);
-			    $query = $query . " WHERE " . $param['name'] . " = " . $param['value'];
+			    $query = $query . " WHERE " . $param['name'] . " = '" . $param['value'] . "' ";
 			}
 			
 			$query = $query . ";";
-			
-			echo $query;
-			
 			$result = pg_query($dbconn, $query);
 			
 			if (!$result) {
@@ -76,7 +72,8 @@
 			$str = "";
 			while ($row = pg_fetch_row($result)) {
 				
-				$str = $str . "$row[3], $row[1]\n";
+				$pricem2 = (int)$row[1];
+				$str = $str . "$row[3], $pricem2\n";
 				
 				// for($i = 0; $i < count($row); $i++) {
 			  		// $str = $str . "$row[$i]";
