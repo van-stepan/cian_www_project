@@ -1,24 +1,22 @@
-function requestCsvData(php_script) {
+function requestCsvData(php_script, opcode) {
 	
 	var response = $.post(php_script, 
 						  {
-						  	par1 : 'ololo',
-						    par2 : 'alala'
+							opcode : opcode
 						  })
-	
+						  
 	.error( function() { alert("requestCsvData(): Error"); } )
-	
-	.success( function(data) { 
-			alert("requestCsvData(): Successful execution"); 
-			alert(data);
-		} );
-	
-	return response;
+	.success( function(data) {
+		alert(data);
+	});
 
+	return null;
 }
+
+
 
 $(document).ready(function(){
 	
-	alert( requestCsvData("php/data.php") );
+	requestCsvData("php/data.php", "get_stats_avg_pricem2");
 	
 });

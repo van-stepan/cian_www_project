@@ -18,12 +18,31 @@
 		
 		<!-- Own scripts -->
         <script type='text/javascript' src="js/plots.js" charset="utf-8"></script>
-        <script type='text/javascript' src="js/data.js" charset="utf-8"></script>
+        <!-- <script type='text/javascript' src="js/data.js" charset="utf-8"></script> -->
         
     </head>
     
     <body>
-        <div id = "plot_container"></div>
+    	<div id = "main_container">
+    		<div id = "query_options">
+    			
+    			<?php
+    			
+    				include 'php/data.php';
+    				
+    				$dbhandler = getDefaultDB();
+    				$result = pg_query($dbhandler, "SELECT DISTINCT nrooms FROM stats ORDER BY nrooms;");
+    				
+    				echo "<select id = 'nrooms_selector'>";
+	    			while ($row = pg_fetch_row($result)) {
+	    				echo "<option value='$row[0]'>$row[0]</option>";
+					}
+					echo "</select>";
+				?>
+    			
+    		</div>
+        	<div id = "plot_container"></div>
+        </div>
     </body>
     
 </html>
