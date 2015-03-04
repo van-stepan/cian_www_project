@@ -28,7 +28,7 @@
     			
     			<?php
     				
-    				$db_type = "mysql";
+    				$db_type = "psql";
     				
     				include 'php/data.php';
     				

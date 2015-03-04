@@ -104,56 +104,45 @@
 
 <?php
 
-	workInMYSQL();
+	// workInMYSQL();
 	
-	// $dbconn = getDefaultDB("psql");
-// 	
-	// $opcode = '';
-	// $params = '';
-	// if( isset($_POST['opcode']) )
-	// {
-	     // $opcode = $_POST['opcode'];
-		 // $params = $_POST['params'];
-	// }
-// 	
-// 	
-	// switch($opcode) {
-// 		
-		// case 'get_stats_avg_pricem2':
-// 			
-			// $query = "SELECT * FROM stats ";
-			// foreach($params as $param) {
-			    // $query = $query . " WHERE " . $param['name'] . " = '" . $param['value'] . "' ";
-			// }
-			// $query = $query . ";";
-// 			
-// 			
-			// $result = pg_query($dbconn, $query);
-// 			
-			// if (!$result) {
-			  // echo "An error occurred.\n";
-			  // exit;
-			// }
-// 			
-			// $str = "";
-			// while ($row = pg_fetch_row($result)) {
-// 				
-				// $pricem2 = (int)$row[1];
-				// $str = $str . "$row[3], $pricem2\n";
-// 				
-				// // for($i = 0; $i < count($row); $i++) {
-			  		// // $str = $str . "$row[$i]";
-					// // if($i != count($row) - 1) {
-						// // $str = $str . ", ";
-					// // }
-					// // else {
-						// // $str = $str . "\n";
-					// // }
-				// // }
-// 				
-// 				
-			// }
-// 			
-			// echo $str;
-	// }
+	$dbconn = getDefaultDB("psql");
+	
+	$opcode = '';
+	$params = '';
+	if( isset($_POST['opcode']) )
+	{
+	     $opcode = $_POST['opcode'];
+		 $params = $_POST['params'];
+	}
+	
+	
+	switch($opcode) {
+		
+		case 'get_stats_avg_pricem2':
+			
+			$query = "SELECT * FROM stats ";
+			foreach($params as $param) {
+			    $query = $query . " WHERE " . $param['name'] . " = '" . $param['value'] . "' ";
+			}
+			$query = $query . ";";
+			
+			
+			$result = pg_query($dbconn, $query);
+			
+			if (!$result) {
+			  echo "An error occurred.\n";
+			  exit;
+			}
+			
+			$str = "";
+			while ($row = pg_fetch_row($result)) {
+				
+				$pricem2 = (int)$row[1];
+				$str = $str . "$row[3], $pricem2\n";
+				
+			}
+			
+			echo $str;
+	}
 ?>
