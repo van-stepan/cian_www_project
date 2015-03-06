@@ -14,7 +14,7 @@
 		
 		$db = null;
 		
-		if($db_type=="psql") {
+		if($db_type =="psql") {
 			
 				$username = "postgres";
 				$password = "130130130";

@@ -47,6 +47,12 @@ function renewPlot() {
 						title: {
 			                text: 'Date'
 			            }
+					},
+					
+					legend: {
+						title: {
+							text: "Price Dynamics"
+						}
 					}
 			        
 				});
@@ -60,6 +66,10 @@ function renewPlot() {
 
 
 $(document).ready(function () {
+	
+	$("#nrooms_selector").change(function() {
+		renewPlot();
+	});
 	
 	$("#nrooms_selector").change(function() {
 		renewPlot();
